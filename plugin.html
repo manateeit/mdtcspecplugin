@@ -6,6 +6,8 @@
         <div id="sidebar" class="sidebar-offcanvas">
            <div ng-include="'cspectplsidebar.html'"></div>
         </div>
+        
+        <div> <h2>Customer Specifications </h2> </div>
 
         <div ng-show="showCompanyInfo"  class="mainPanel" >
             <div ng-include="'cspectplcompanyinfo.html'"></div>
@@ -23,6 +25,7 @@
 
 <!-- SIDEBARE TEMPLATE -------------cspectplsidebar.html --------------------------------------------------------------------------------------------------------->
 <script type="text/ng-template" id="cspectplsidebar.html">
+    
     
      <div style="margin-bottom: 10px;" >
             <input type="text"  ng-model="searchCompany.name" placeholder="Search here..." class="">
@@ -132,9 +135,9 @@
                     <td>{{cspec.po}}</td>
                     <td>
                         <i tooltip="Edit Spec" ng-click="cspecEdit(cspec.specID,$index)" class="icon-edit md-icon"></i></a>
-                        <i style="margin-left:8px;" tooltip="Email Spec" class="icon-mail md-icon"></i></a>
-                        <i style="margin-left:8px;" tooltip="Download Spec" class="icon-file-pdf md-icon"></i></a>
-                        <i style="margin-left:8px; font-size:16px;" tooltip="Delete Spec" ng-click="cspecDelete(cspec.specID,$index)" class="icon-trash"></i>
+                        <!-- <i style="margin-left:8px;" tooltip="Email Spec" class="icon-mail md-icon"></i></a> -->
+                        <i style="margin-left:8px;" ng-click="cspecDownload(cspec.specID,cspec.customer.id)" tooltip="Download Spec" class="icon-file-pdf md-icon"></i></a>
+                        <i style="margin-left:8px; font-size:16px; color: red;" tooltip="Delete Spec" ng-click="cspecDelete(cspec.specID,$index)" class="icon-trash"></i>
                     </td>
                 </tr>
                
@@ -287,4 +290,3 @@
 
 
 </script>
-

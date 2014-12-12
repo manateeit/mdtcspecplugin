@@ -1,8 +1,8 @@
 /**
  * Plugin cspec Controller
  */
-plugin.controller('cspecCntl', ['$scope', '$parse', '$http', 'znData', '$routeParams', 'znModal','$templateCache', '$timeout', '$location', 'cspecDataShare', 'cspecDataSvc',
-        function ($scope, $parse, $http, znData, $routeParams, znModal,$templateCache, $timeout, $location, cspecDataShare, cspecDataSvc ) {
+plugin.controller('cspecCntl', ['$scope', '$window', '$parse', '$http', 'znData', '$routeParams', 'znModal','$templateCache', '$timeout', '$location', 'cspecDataShare', 'cspecDataSvc',
+        function ($scope, $window, $parse, $http, znData, $routeParams, znModal,$templateCache, $timeout, $location, cspecDataShare, cspecDataSvc ) {
 
     $scope.workspaceId = null;
     $scope.CompanySet="false";
@@ -300,6 +300,33 @@ plugin.controller('cspecCntl', ['$scope', '$parse', '$http', 'znData', '$routePa
                 
                 });
 
+
+
+$scope.cspecDownload = function (cspecID, customer) {
+    
+    console.log(cspecID);
+    console.log(customer);
+    
+    var firehostURL = "https://mdtechapp.firebaseapp.com/index.html#/cspec/" + customer + "/" + cspecID + "/";
+    var myWindow = $window.open(firehostURL, "MsgWindow", "width=900, height=720", "true");
+    myWindow.document.close();
+    myWindow.focus();
+    
+};
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
 }])
 .directive('cspecFileInput', ['$parse', function($parse){
     return {
@@ -319,7 +346,15 @@ plugin.controller('cspecCntl', ['$scope', '$parse', '$http', 'znData', '$routePa
          });
         }
     };
+
+
+
+
+
 }])
+
+
+
 .directive('cspecEncode', [function () {
   return {
     restrict: 'A',
@@ -504,4 +539,7 @@ function base64ArrayBuffer(arrayBuffer) {
 	order: 300,
 	icon: 'icon-doc-text'
 });
+
+
+
 
